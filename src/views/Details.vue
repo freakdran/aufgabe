@@ -106,7 +106,6 @@ thead>tr>th:nth-child(4) {
 } */
 
 /* without Text collumn */ 
-
 thead>tr>th:nth-child(1) {
   width: 75%;
 }
