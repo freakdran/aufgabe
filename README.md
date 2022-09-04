@@ -1,24 +1,23 @@
-# aufgabe
+# Aufgabe
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- Erstelle in vue2 eine Formular Komponente
+    - Title (max. 100 Zeichen)
+    - Text (max. 300 Zeichen)
+    - Anzeige unter dem Text die genutzten Zeichen: x/300
+    - Datumsfeld
+    - Speichern Button
+        - Beim Klick auf den Button werden die Formulardaten an die Parent-Komponente übertragen.
+        - Das Formular wird anschließend geleert
+- Erstelle 2 VUE Seiten (nutze den VUE Router)
+    - Login-Page
+        - Speicherung des Logins im LocalStore des Browsers
+        - Die Validierung Nutzername/Password kann hardcodiert in der VUE Komponente umgesetzt werden
+    - Detail-Page
+        - Seite kann nur aufgerufen werden, wenn der Nutzer eingeloggt ist, ansonsten wird er auf die Login-Page geleitet
+            - Nutze die vue-router navigation guards
+        - Binde oben auf der Seite die Formular-Komponente ein
+        - Liste unter der Formular-Komponente alle Formular-Eingaben auf. (Title + Datum)
+        - Die Liste soll nicht persistiert werden. Bei einem Reload der Seite soll die Liste wieder leer sein.
+            - Hinter jedem Eintrag befindet sich ein Edit-Button oder link. Der Link lädt den Eintrag in die Formular-Komponente oben auf der Seite.
+            - Wird der Eintrag in der Formular-Komponente gespeichert, aktualisiert sich auch der Eintrag in der Liste und die Formular-Komponente wird geleert.
+            - Wird in der Formular-Komponente ein neuer Eintrag erstellt, wird er der Liste hinzugefügt.
