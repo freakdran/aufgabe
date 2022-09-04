@@ -1,6 +1,6 @@
 <template>
     <div class="inputForm">
-        <input id="titleInput" v-model="title" placeholder="Titel (up to a 100 characters)" maxlength="100">
+        <input id="titleInput" v-model="title" placeholder="Titel (up to a 100 characters)" maxlength="100" />
         <p></p>
         <textarea id="textInput" v-model="text" placeholder="Text (up to a 300 characters)" maxlength="300"></textarea>
         <div id="countdown">{{ textLenght() }}/300</div>
@@ -11,13 +11,12 @@
   <script>
 export default {
     name: 'FormularComponent',
-    props: {
-    },
+    props: ["formData"],
     data: function () {
         return {
             title: "",
             text: "",
-            date: Date.now(),
+            id: -1
         }
     },
     methods: {
@@ -26,11 +25,22 @@ export default {
         },
         saveForm: function () {
             if (this.title.length > 0 && this.text.length > 0) {
-                this.$parent.saveForm(this.title, this.text, this.date)
+                if (this.id === -1) {
+                    this.$parent.saveForm(this.title, this.text, Date.now())
+                } else {
+                    this.$parent.saveEdit(this.title, this.text, Date.now(), this.id)
+                }
+                this.title = ""
+                this.text = ""
+                this.id = -1
             }
+        },
+        showEdit: function (title,text, id) {
+            this.title = title
+            this.text = text; 
+            this.id = id; 
         }
-
-    }
+    },
 }
 </script>
   

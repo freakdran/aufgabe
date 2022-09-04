@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
     <nav>
       <router-link to="/">Login</router-link> |
       <router-link to="/details">Details</router-link>
@@ -13,7 +13,7 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align:center
+  text-align: center
 }
 
 nav {

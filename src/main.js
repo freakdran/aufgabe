@@ -4,6 +4,15 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+// Vue.mixin({
+
+//   methods: {
+//     isAuthenticated() {
+//       console.log("test")
+//     }
+//   }
+// })
+
 new Vue({
   router,
   render: h => h(App)
