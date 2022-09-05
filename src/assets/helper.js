@@ -5,9 +5,9 @@ export default {
             let loginData = JSON.parse(localStorage.loginData);
             // session timer 1 day
             if (Date.now() - loginData.timestamp < 1000 * 60 * 60 * 24) {
-                return true
+                return true;
             } else {
-                return false
+                return false;
             }
         } else {
             return false;

@@ -17,8 +17,9 @@
           <td>{{ entry.title }}</td>
           <!-- <td>{{ entry.text }}</td> -->
           <td>{{ new Date(entry.date).toDateString() }}</td>
-          <td><button @click=editEntry(entry.id)>Edit</button><button disabled
-              @click=deleteEntry(entry.id)>Delete</button></td>
+          <td><button @click=editEntry(entry.id)>Edit</button>
+            <button :disabled="true" @click=deleteEntry(entry.id)>Delete</button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -43,24 +44,24 @@ export default {
   },
   methods: {
     saveForm: function (title, text, date) {
-      this.entries.push({ id: this.id, title: title, text: text, date: date })
-      this.id++
+      this.entries.push({ id: this.id, title: title, text: text, date: date });
+      this.id++;
     },
     saveEdit: function (title, text, date, id) {
-      let index = this.entries.map(entry => entry.id).indexOf(id)
+      let index = this.entries.map(entry => entry.id).indexOf(id);
       if (index !== -1) {
-        this.entries.splice(index, 1, { id: this.id, title: title, text: text, date: date })
+        this.entries.splice(index, 1, { id: this.id, title: title, text: text, date: date });
       } else {
-        this.entries.push({ id: this.id, title: title, text: text, date: date })
-        this.id++
+        this.entries.push({ id: this.id, title: title, text: text, date: date });
+        this.id++;
       }
     },
     deleteEntry: function (id) {
-      let index = this.entries.map(entry => entry.id).indexOf(id)
-      this.entries.splice(index, 1)
+      let index = this.entries.map(entry => entry.id).indexOf(id);
+      this.entries.splice(index, 1);
     },
     editEntry: function (id) {
-      let index = this.entries.map(entry => entry.id).indexOf(id)
+      let index = this.entries.map(entry => entry.id).indexOf(id);
       this.$refs.form.showEdit(this.entries[index].title, this.entries[index].text, this.entries[index].id);
     }
   }
@@ -69,7 +70,7 @@ export default {
 
 <style scoped>
 .formular {
-  align-items: left
+  align-items: left;
 }
 
 table {
@@ -80,14 +81,14 @@ table {
 }
 
 tr:nth-child(even) {
-  background-color: #e1e1e1
+  background-color: #e1e1e1;
 }
 
 thead {
-  border-bottom: 2px solid black
+  border-bottom: 2px solid black;
 }
 
-/* with Text collumn */ 
+/* with Text collumn */
 /*
 thead>tr>th:nth-child(1) {
   width: 15%;
@@ -105,7 +106,7 @@ thead>tr>th:nth-child(4) {
   width: 10%
 } */
 
-/* without Text collumn */ 
+/* without Text collumn */
 thead>tr>th:nth-child(1) {
   width: 75%;
 }
@@ -115,7 +116,7 @@ thead>tr>th:nth-child(2) {
 }
 
 thead>tr>th:nth-child(3) {
-  width: 10%
+  width: 10%;
 }
 
 
@@ -124,8 +125,7 @@ tbody>tr>td {
   overflow: hidden;
   white-space: nowrap;
   padding-left: 3px;
-  text-align: left
+  text-align: left;
 }
 
-;
 </style>

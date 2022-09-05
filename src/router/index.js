@@ -28,7 +28,7 @@ const router = new VueRouter({
 // check on each reroute if logged in, if not, route to login page
 router.beforeEach((to, from, next) => {
   if (to.name !== "login" && !helper.isAuthenticated()) {
-    next({ name: "login" })
+    next({ name: "login" });
   } else {
     next();
   }

@@ -4,7 +4,7 @@
         <p></p>
         <textarea id="textInput" v-model="text" placeholder="Text (up to a 300 characters)" maxlength="300"></textarea>
         <div id="countdown">{{ textLenght() }}/300</div>
-        <button id="saveButton" @click="saveForm()">Save</button>
+        <button id="saveButton" @click="saveForm()" :disabled="this.title.length === 0 || this.text.length === 0">Save</button>
     </div>
 </template>
   
@@ -21,25 +21,25 @@ export default {
     },
     methods: {
         textLenght: function () {
-            return this.text.length
+            return this.text.length;
         },
         saveForm: function () {
             if (this.title.length > 0 && this.text.length > 0) {
                 if (this.id === -1) {
-                    this.$parent.saveForm(this.title, this.text, Date.now())
+                    this.$parent.saveForm(this.title, this.text, Date.now());
                 } else {
-                    this.$parent.saveEdit(this.title, this.text, Date.now(), this.id)
+                    this.$parent.saveEdit(this.title, this.text, Date.now(), this.id);
                 }
-                this.title = ""
-                this.text = ""
-                this.id = -1
+                this.title = "";
+                this.text = "";
+                this.id = -1;
             }
         },
         showEdit: function (title,text, id) {
-            this.title = title
+            this.title = title;
             this.text = text; 
             this.id = id; 
-        }
+        },
     },
 }
 </script>

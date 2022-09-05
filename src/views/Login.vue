@@ -36,24 +36,24 @@ export default {
   methods: {
     login: function () {
       if (this.username === "john.doe@test.com" && this.password === "test") {
-        let loginData = { username: this.username, password: "cryptedPassword", timestamp: Date.now() }
+        let loginData = { username: this.username, password: "cryptedPassword", timestamp: Date.now() };
         localStorage.loginData = JSON.stringify(loginData);
         this.loggedIn = true;
         this.username = "";
         this.password = "";
       } else {
-        this.$refs.username.classList.add('error')
-        this.$refs.password.classList.add('error')
+        this.$refs.username.classList.add('error');
+        this.$refs.password.classList.add('error');
       }
     },
     logOut() {
       this.loggedIn = false;
       localStorage.removeItem("loginData");
-      console.log(localStorage)
+      console.log(localStorage);
     },
     removeError: function () {
-      this.$refs.username.classList.remove('error')
-      this.$refs.password.classList.remove('error')
+      this.$refs.username.classList.remove('error');
+      this.$refs.password.classList.remove('error');
     },
 
   }
