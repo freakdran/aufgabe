@@ -49,7 +49,6 @@ export default {
     logOut() {
       this.loggedIn = false;
       localStorage.removeItem("loginData");
-      console.log(localStorage);
     },
     removeError: function () {
       this.$refs.username.classList.remove('error');
