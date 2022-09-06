@@ -14,6 +14,7 @@
 export default {
     name: 'FormularComponent',
     props: ["formData"],
+    emits:["saveForm","saveEdit"],
     data: function () {
         return {
             title: "",
@@ -29,9 +30,9 @@ export default {
         saveForm: function () {
             if (this.title.length > 0 && this.text.length > 0) {
                 if (this.id === -1) {
-                    this.$parent.saveForm(this.title, this.text, Date.now());
+                    this.$emit("saveForm", { title: this.title, text: this.text, date: Date.now() })
                 } else {
-                    this.$parent.saveEdit(this.title, this.text, Date.now(), this.id);
+                    this.$emit("saveEdit", { title: this.title, text: this.text, date: Date.now(), id: this.id })
                 }
                 this.title = "";
                 this.text = "";

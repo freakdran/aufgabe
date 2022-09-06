@@ -1,6 +1,6 @@
 <template>
   <div class="details">
-    <Formular class="formular" ref="form" v-model="this.formData"></Formular>
+    <Formular class="formular" ref="form" v-model="this.formData" @saveForm="saveForm" @saveEdit="saveEdit"></Formular>
     <br>
     <br>
     <table>
@@ -43,16 +43,16 @@ export default {
     }
   },
   methods: {
-    saveForm: function (title, text, date) {
-      this.entries.push({ id: this.id, title: title, text: text, date: date });
+    saveForm: function (form) {
+      this.entries.push({ id: this.id, title: form.title, text: form.text, date: form.date });
       this.id++;
     },
-    saveEdit: function (title, text, date, id) {
-      let index = this.entries.map(entry => entry.id).indexOf(id);
+    saveEdit: function (form) {
+      let index = this.entries.map(entry => entry.id).indexOf(form.id);
       if (index !== -1) {
-        this.entries.splice(index, 1, { id: this.id, title: title, text: text, date: date });
+        this.entries.splice(index, 1, { id: this.id, title: form.title, text: form.text, date: form.date });
       } else {
-        this.entries.push({ id: this.id, title: title, text: text, date: date });
+        this.entries.push({ id: this.id, title: form.title, text: form.text, date: form.date });
         this.id++;
       }
     },
@@ -127,5 +127,4 @@ tbody>tr>td {
   padding-left: 3px;
   text-align: left;
 }
-
 </style>
