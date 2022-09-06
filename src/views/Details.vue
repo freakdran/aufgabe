@@ -35,7 +35,7 @@ export default {
   components: {
     Formular,
   },
-  data: function () {
+  data() {
     return {
       entries: [],
       id: 0,
@@ -43,11 +43,11 @@ export default {
     }
   },
   methods: {
-    saveForm: function (form) {
+    saveForm(form) {
       this.entries.push({ id: this.id, title: form.title, text: form.text, date: form.date });
       this.id++;
     },
-    saveEdit: function (form) {
+    saveEdit(form) {
       let index = this.entries.map(entry => entry.id).indexOf(form.id);
       if (index !== -1) {
         this.entries.splice(index, 1, { id: form.id, title: form.title, text: form.text, date: form.date });
@@ -57,11 +57,11 @@ export default {
         this.id++;
       }
     },
-    deleteEntry: function (id) {
+    deleteEntry(id) {
       let index = this.entries.map(entry => entry.id).indexOf(id);
       this.entries.splice(index, 1);
     },
-    editEntry: function (id) {
+    editEntry(id) {
       let index = this.entries.map(entry => entry.id).indexOf(id);
       this.$refs.form.showEdit(this.entries[index].title, this.entries[index].text, this.entries[index].id);
     }

@@ -22,7 +22,7 @@ export default {
   components: {
 
   },
-  data: function () {
+  data() {
     return {
       loggedIn: false,
       username: "",
@@ -34,7 +34,7 @@ export default {
   },
 
   methods: {
-    login: function () {
+    login() {
       if (this.username === "john.doe@test.com" && this.password === "test") {
         let loginData = { username: this.username, password: "cryptedPassword", timestamp: Date.now() };
         localStorage.loginData = JSON.stringify(loginData);
@@ -50,7 +50,7 @@ export default {
       this.loggedIn = false;
       localStorage.removeItem("loginData");
     },
-    removeError: function () {
+    removeError() {
       this.$refs.username.classList.remove('error');
       this.$refs.password.classList.remove('error');
     },

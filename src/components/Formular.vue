@@ -14,7 +14,7 @@
 export default {
     name: 'FormularComponent',
     props: ["formData"],
-    emits:["saveForm","saveEdit"],
+    emits: ["saveForm", "saveEdit"],
     data: function () {
         return {
             title: "",
@@ -24,10 +24,10 @@ export default {
         }
     },
     methods: {
-        textLenght: function () {
+        textLenght() {
             return this.text.length;
         },
-        saveForm: function () {
+        saveForm() {
             if (this.title.length > 0 && this.text.length > 0) {
                 if (this.id === -1) {
                     this.$emit("saveForm", { title: this.title, text: this.text, date: Date.now() })
@@ -39,12 +39,12 @@ export default {
                 this.id = -1;
             }
         },
-        showEdit: function (title, text, id) {
+        showEdit(title, text, id) {
             this.title = title;
             this.text = text;
             this.id = id;
         },
-        getTime: function () {
+        getTime() {
             const now = new Date();
             const date = `${now.getDay()}.${now.getMonth()}.${now.getFullYear()}`;
             const time = `${now.getHours()}:${now.getMinutes()}`;
@@ -52,7 +52,7 @@ export default {
             this.timestamp = `${date} ${time}`
         }
     },
-    mounted: function () {
+    mounted() {
         this.getTime();
         setInterval(() => { this.getTime() }, 5000)
     }
