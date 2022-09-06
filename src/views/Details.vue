@@ -50,7 +50,8 @@ export default {
     saveEdit: function (form) {
       let index = this.entries.map(entry => entry.id).indexOf(form.id);
       if (index !== -1) {
-        this.entries.splice(index, 1, { id: this.id, title: form.title, text: form.text, date: form.date });
+        this.entries.splice(index, 1, { id: form.id, title: form.title, text: form.text, date: form.date });
+        console.log(this.entries)
       } else {
         this.entries.push({ id: this.id, title: form.title, text: form.text, date: form.date });
         this.id++;
